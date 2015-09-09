@@ -1,7 +1,7 @@
 ﻿using SortingDataType;
 using System;
 
-namespace SortingAlgorithms
+namespace SortSpecial.SortingAlgorithms
 {
     internal abstract class Sortable<T> where T : IComparable
     {

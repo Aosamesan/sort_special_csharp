@@ -1,4 +1,4 @@
-﻿using SortingAlgorithms;
+﻿using SortSpecial.SortingAlgorithms;
 using SortingDataType;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace SortSpecial
             foreach (int size in testCases)
             {
                 CloneableList<T> originArray = GenerateRandomArray<T>(size, length);
-                foreach (Type genericAlgo in GetSortingAlgorithms())
+                foreach (Type genericAlgo in GetSortingAlgorithms<T>())
                 {
                     algo = genericAlgo.MakeGenericType(typeof(T));
                     sortAlgorithm = Activator.CreateInstance(algo) as Sortable<T>;
@@ -102,10 +102,19 @@ namespace SortSpecial
             return true;
         }
 
-        public static Type[] GetSortingAlgorithms()
+        public static Type[] GetSortingAlgorithms<T>() where T : IComparable
         {
+            Console.WriteLine(typeof(T).Name);
+            foreach(Type t in Assembly.GetExecutingAssembly().GetTypes())
+            {
+                foreach(var f in t.GetInterfaces())
+                Console.WriteLine(f.Name);
+            }
+
             return Assembly.GetExecutingAssembly().GetTypes().Where(type =>
-                String.Equals(type.Namespace, "SortingAlgorithms") && !type.IsAbstract).ToArray();
+                String.Equals(type.Namespace, "SortSpecial.SortingAlgorithms")
+                && type.IsSubclassOf(typeof(Sortable<T>))
+                && !type.IsAbstract).ToArray();
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using SortingDataType;
 using System;
 
-namespace SortingAlgorithms
+namespace SortSpecial.SortingAlgorithms
 {
+
     internal class BubbleSort<T> : Sortable<T> where T : IComparable
     {
         public BubbleSort() : base("Bubble Sort") { }

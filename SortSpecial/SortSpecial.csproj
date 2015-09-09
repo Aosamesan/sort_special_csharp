@@ -67,6 +67,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SortingAlgorithms\MergeSort.cs" />
     <Compile Include="SortingAlgorithms\QuadraticSorts.cs" />
     <Compile Include="SortingAlgrithms.cs" />
     <Compile Include="SortingHelper.cs" />
