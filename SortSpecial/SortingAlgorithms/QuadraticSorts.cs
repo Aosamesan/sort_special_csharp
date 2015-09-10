@@ -6,8 +6,6 @@ namespace SortSpecial.SortingAlgorithms
 
     internal class BubbleSort<T> : Sortable<T> where T : IComparable
     {
-        public BubbleSort() : base("Bubble Sort") { }
-
         public override void Sort(CloneableList<T> list)
         {
             ResetCount();
@@ -28,8 +26,6 @@ namespace SortSpecial.SortingAlgorithms
 
     internal class SelectionSort<T> : Sortable<T> where T : IComparable
     {
-        public SelectionSort() : base("Selection Sort") { }
-
         public override void Sort(CloneableList<T> list)
         {
             ResetCount();
@@ -56,8 +52,6 @@ namespace SortSpecial.SortingAlgorithms
 
     internal class InsertionSort<T> : Sortable<T> where T : IComparable
     {
-        public InsertionSort() : base("Insertion Sort") { }
-
         public override void Sort(CloneableList<T> list)
         {
             for (int i = 0; i < list.Count - 1; i++)

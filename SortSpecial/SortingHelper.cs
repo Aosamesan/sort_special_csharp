@@ -96,7 +96,7 @@ namespace SortSpecial
         {
             for (int i = 0; i < arr.Count - 1; i++)
             {
-                if (SortingAlgorithms.Sortable<T>.CompareItems(arr[i], arr[i + 1]))
+                if (Sortable<T>.CompareItems(arr[i], arr[i + 1]))
                     return false;
             }
             return true;
@@ -104,16 +104,8 @@ namespace SortSpecial
 
         public static Type[] GetSortingAlgorithms<T>() where T : IComparable
         {
-            Console.WriteLine(typeof(T).Name);
-            foreach(Type t in Assembly.GetExecutingAssembly().GetTypes())
-            {
-                foreach(var f in t.GetInterfaces())
-                Console.WriteLine(f.Name);
-            }
-
             return Assembly.GetExecutingAssembly().GetTypes().Where(type =>
                 String.Equals(type.Namespace, "SortSpecial.SortingAlgorithms")
-                && type.IsSubclassOf(typeof(Sortable<T>))
                 && !type.IsAbstract).ToArray();
         }
     }

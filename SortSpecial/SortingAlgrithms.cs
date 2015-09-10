@@ -18,14 +18,12 @@ namespace SortSpecial.SortingAlgorithms
         public static bool CompareItems(T item1, T item2)
             => item1.CompareTo(item2) > 0;
 
-        protected Sortable()
+        public Sortable()
         {
             ResetCount();
-        }
-
-        protected Sortable(string sortName) : this()
-        {
-            SortName = sortName;
+            SortName = this.GetType().Name;
+            SortName = SortName.Remove(SortName.IndexOf('`'));
+            SortName = SortName.Insert(SortName.IndexOf("Sort"), " ");
         }
 
         public void ResetCount()
